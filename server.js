@@ -4,19 +4,13 @@ const WebSocket = require('ws');
 const path = require('path');
 const EventHubReader = require('./scripts/event-hub-reader.js');
 
-const iotHubConnectionString = process.env.IotHubConnectionString;
-if (!iotHubConnectionString) {
-  console.error(`Environment variable IotHubConnectionString must be specified.`);
-  return;
-}
+const iotHubConnectionString = 'HostName=MYESP32HUB01.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=rchvgFvmnLNIczF4+NbqrQaIY+qSrz2EQ3nKjd7ele0=';
+
 console.log(`Using IoT Hub connection string [${iotHubConnectionString}]`);
 
-const eventHubConsumerGroup = process.env.EventHubConsumerGroup;
+const eventHubConsumerGroup = 'MYCONSUMERGROUP01';
 console.log(eventHubConsumerGroup);
-if (!eventHubConsumerGroup) {
-  console.error(`Environment variable EventHubConsumerGroup must be specified.`);
-  return;
-}
+
 console.log(`Using event hub consumer group [${eventHubConsumerGroup}]`);
 
 // Redirect requests to the public subdirectory to the root
